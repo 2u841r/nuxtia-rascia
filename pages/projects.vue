@@ -9,7 +9,6 @@ import ExternalLinkIcon from '~/assets/External.vue';
 
 <template>
   <div>
-    <SidebarLayout>
       <main>
         <div class="container">
           <header class="hero">
@@ -43,6 +42,5 @@ import ExternalLinkIcon from '~/assets/External.vue';
           </div>
         </section>
       </main>
-    </SidebarLayout>
   </div>
 </template>
