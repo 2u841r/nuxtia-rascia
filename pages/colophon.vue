@@ -29,37 +29,48 @@
     </p>
     <p>এই সাইটের ক্লোন আলাদা ডোমেইনে আলাদাভাবে ডিপ্লয় করা আছে।</p>
     <table>
-      <tr>
-        <th>ডোমেইন</th>
-        <th>ধরণ</th>
-        <th>হোস্টিং</th>
-      </tr>
-      <tr>
-        <td><a href="/"> www.zmt3.com </a></td>
-        <td>SSG / Static</td>
-        <td>Netlify</td>
-      </tr>
-      <tr>
-        <td>
-          <a href="https://ssr.zmt3.com" target="_blank"> ssr.zmt3.com </a>
-        </td>
-        <td>SSR</td>
-        <td>Netlify</td>
-      </tr>
-      <tr>
-        <td>
-          <a href="https://deno.zmt3.com" target="_blank"> deno.zmt3.com </a>
-        </td>
-        <td>SSR</td>
-        <td>Deno Deploy</td>
-      </tr>
-      <tr>
-        <td>
-          <a href="https://zubair.click" target="_blank"> zubair.click </a>
-        </td>
-        <td>SSG / Static</td>
-        <td>AWS Amplify</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>ডোমেইন</th>
+          <th>ধরণ</th>
+          <th>হোস্টিং</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="/"> www.zmt3.com </a></td>
+          <td>SSG / Static</td>
+          <td>Netlify</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://ssr.zmt3.com" target="_blank"> ssr.zmt3.com </a>
+          </td>
+          <td>SSR</td>
+          <td>Netlify</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://deno.zmt3.com" target="_blank"> deno.zmt3.com </a>
+          </td>
+          <td>SSR</td>
+          <td>Deno Deploy</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://zubair.click" target="_blank"> zubair.click </a>
+          </td>
+          <td>SSG / Static</td>
+          <td>AWS Amplify</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://vue.zmt3.com" target="_blank"> vue.zmt3.com </a>
+          </td>
+          <td>Nuxt Universal Rendering</td>
+          <td>Netlify</td>
+        </tr>
+      </tbody>
     </table>
 
     <section class="segment small">

@@ -8,11 +8,11 @@ import floppy from './public/assets/nav-floppy.png';
 
 const links = [
   { url: '/colophon', label: 'Colophon' },
-  { url: 'https://ssr.zmt3.com', label: 'SSR' },
+  { url: 'https://vue.zmt3.com', label: 'Nuxt' },
   { url: 'https://deno.zmt3.com', label: 'Deno' },
   { url: 'https://zubair.click', label: 'Amplify' },
   { url: 'https://zubairiz.com', label: 'Vercel' },
-  { url: 'https://vue.zmt3.com', label: 'Netlify, Nuxt SSR' },
+  // { url: 'https://vue.zmt3.com', label: 'Nuxt' },
 ]
 
 const madeWithLinks = [
