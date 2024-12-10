@@ -1,11 +1,11 @@
 <script>
-  /** @type {import('./$types').PageData} */
+/** @type {import('./$types').PageData} */
 //   import SEO from "$lib/components/SEO.svelte";
 //   export let data;
 </script>
 
 <template>
-    <!-- <SEO pageTitle="Colophon" /> -->
+  <!-- <SEO pageTitle="Colophon" /> -->
   <div class="container">
     <div class="hero">
       <h1>Colophon</h1>
@@ -13,12 +13,14 @@
     <br />
     <p>
       A colophon is a page or section, like a footer, of a site that describes
-      how the site is made, with what tools, supporting what technologies. See <a
+      how the site is made, with what tools, supporting what technologies. See
+      <a
         href="https://en.wikipedia.org/wiki/Colophon_(publishing)"
         target="_blank"
       >
         Wikipedia
-      </a> for more details.
+      </a>
+      for more details.
     </p>
     <p>
       ওয়েবসাইটটি Svelte দিয়ে তৈরি। ডিজাইন css দিয়ে, পরবর্তীতে tailwind ব্যবহার
@@ -28,35 +30,35 @@
     <p>এই সাইটের ক্লোন আলাদা ডোমেইনে আলাদাভাবে ডিপ্লয় করা আছে।</p>
     <table>
       <tr>
-        <th> ডোমেইন </th>
-        <th> ধরণ </th>
-        <th> হোস্টিং </th>
+        <th>ডোমেইন</th>
+        <th>ধরণ</th>
+        <th>হোস্টিং</th>
       </tr>
       <tr>
-        <td> <a href="/"> www.zmt3.com </a> </td>
-        <td> SSG / Static </td>
-        <td> Netlify </td>
+        <td><a href="/"> www.zmt3.com </a></td>
+        <td>SSG / Static</td>
+        <td>Netlify</td>
       </tr>
       <tr>
         <td>
           <a href="https://ssr.zmt3.com" target="_blank"> ssr.zmt3.com </a>
         </td>
-        <td> SSR </td>
-        <td> Netlify </td>
+        <td>SSR</td>
+        <td>Netlify</td>
       </tr>
       <tr>
         <td>
           <a href="https://deno.zmt3.com" target="_blank"> deno.zmt3.com </a>
         </td>
-        <td> SSR </td>
-        <td> Deno Deploy </td>
+        <td>SSR</td>
+        <td>Deno Deploy</td>
       </tr>
       <tr>
         <td>
           <a href="https://zubair.click" target="_blank"> zubair.click </a>
         </td>
-        <td> SSG / Static </td>
-        <td> AWS Amplify </td>
+        <td>SSG / Static</td>
+        <td>AWS Amplify</td>
       </tr>
     </table>
 
@@ -64,5 +66,4 @@
       <div class="post-content"></div>
     </section>
   </div>
-
 </template>

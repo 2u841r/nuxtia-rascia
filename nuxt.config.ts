@@ -2,6 +2,11 @@
 import { dirname, resolve } from "path";
 
 export default defineNuxtConfig({
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false,
+    },
+  },
   css: ["@/styles/style.css"],
   runtimeConfig: {
     public: {
@@ -11,7 +16,6 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        
         {
           rel: "stylesheet",
           href: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css",

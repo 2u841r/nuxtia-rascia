@@ -1,3 +1,23 @@
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    description: {
+      type: String,
+      default: "",
+    },
+    slug: {
+      type: String,
+      default: "",
+    },
+  },
+};
+</script>
+
+
 <template>
     <h2 class="home-heading">
       <div>
@@ -7,27 +27,4 @@
       <a v-if="slug" class="button" :href="slug">View all</a>
     </h2>
   </template>
-  
-  <script>
-  export default {
-    props: {
-      title: {
-        type: String,
-        default: "",
-      },
-      description: {
-        type: String,
-        default: "",
-      },
-      slug: {
-        type: String,
-        default: "",
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-  /* Add your styles here */
-  </style>
   

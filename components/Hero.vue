@@ -1,3 +1,26 @@
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    subTitle: {
+      type: String,
+      default: "",
+    },
+    highlight: {
+      type: String,
+      default: "",
+    },
+    index: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
+
 <template>
     <header :class="['hero', { index }]">
       <div v-if="subTitle" class="sub-title">
@@ -8,27 +31,4 @@
       <slot />
     </header>
   </template>
-  
-  <script>
-  export default {
-    props: {
-      title: {
-        type: String,
-        default: "",
-      },
-      subTitle: {
-        type: String,
-        default: "",
-      },
-      highlight: {
-        type: String,
-        default: "",
-      },
-      index: {
-        type: Boolean,
-        default: false,
-      },
-    },
-  };
-  </script>
   

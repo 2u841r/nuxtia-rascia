@@ -44,17 +44,18 @@ const socialNavItems = [
     { url: "https://github.com/2u841r", icon: github, label: "GitHub" },
 ];
 
-function slugify(string) {
-    return (
-        string &&
-        `${string}`
-            .match(
-                /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
-            )
-            .map((x) => x.toLowerCase())
-            .join('-')
-    )
-}
+// function slugify(string) {
+
+//     return (
+//         string &&
+//         `${string}`
+//             .match(
+//                 /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+//             )
+//             .map((x) => x.toLowerCase())
+//             .join('-')
+//     )
+//}
 
 
 </script>
@@ -65,9 +66,10 @@ function slugify(string) {
             <div class="container">
                 <nav>
                     <div v-for="navItem in mainNavItems" :key="navItem.label" class="nav-item-outer">
-                        <NuxtLink :to="navItem.url" :class="['item', 'home', slugify(navItem.label)]">
+                        <NuxtLink :to="navItem.url" :class="['item']">
                             <img :src="navItem.icon" alt="navIcon" class="nav-image" />
                             <span>{{ navItem.label }}</span>
+ 
                         </NuxtLink>
                     </div>
 
