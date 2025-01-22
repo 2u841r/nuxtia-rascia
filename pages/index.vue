@@ -1,116 +1,67 @@
 <script setup>
-// You'll need to import your components
 import Hero from '~/components/Hero.vue'
 import Heading from '~/components/Heading.vue'
-// import Circle from '~/components/Circle.vue'
 import Projects from '~/components/Projects.vue'
-import {formatDate} from '~/utils/helpers.js'
+import { formatDate } from '~/utils/helpers.js'
+import skills from '~/assets/data/skillList'
 
-const config = useRuntimeConfig();
-const API = config.public.api;
-
-// Add your data fetching logic here
-const latestPosts = ref({
-  loading: true,
-  error: null,
-  data: []
-})
-
-const highlightedPosts = ref({
-  loading: true,
-  error: null,
-  data: []
-})
-
-import skills from '~/assets/data/skillList';
-const skillList = ref([
-  ...skills
-])
-
-
-onMounted(async () => {
-  try {
-    // Fetch both latest posts and highlights concurrently
-    const [postsPromise, highlightsPromise] = await Promise.allSettled([
-      fetchLatestPosts(),
-      fetchHighlightedPosts(),
-    ]);
-
-    // Handle latest posts result
-    if (postsPromise.status === "fulfilled") {
-      latestPosts.value = {
-        loading: false,
-        data: postsPromise.value,
-        error: null,
-      };
-    } else {
-      latestPosts.value = {
-        loading: false,
-        data: null,
-        error: postsPromise.reason.message,
-      };
-    }
-
-    // Handle highlighted posts result
-    if (highlightsPromise.status === "fulfilled") {
-      highlightedPosts.value = {
-        loading: false,
-        data: highlightsPromise.value,
-        error: null,
-      };
-    } else {
-      highlightedPosts.value = {
-        loading: false,
-        data: null,
-        error: highlightsPromise.reason.message,
-      };
-    }
-  } catch (error) {
-    console.error("Error fetching posts:", error);
+// Convert fetching logic to use useAsyncData
+const { data: latestPosts, pending: isLatestLoading, error: latestError } = await useAsyncData(
+  'latest-posts',
+  async () => {
+    const API = 'https://wp3.zmt3.com/wp-json/wp/v2'
+    const res = await fetch(`${API}/posts?per_page=6&categories_exclude=3`)
+    if (!res.ok) throw new Error("Failed to fetch latest posts")
+    return res.json()
   }
-});
+)
 
-// Fetch latest posts
-async function fetchLatestPosts() {
-  const API = 'https://wp3.zmt3.com/wp-json/wp/v2';
-  const res = await fetch(`${API}/posts?per_page=6&categories_exclude=3`);
-  if (!res.ok) throw new Error("Failed to fetch latest posts");
-  return await res.json();
-}
-
-// Fetch highlighted posts
-async function fetchHighlightedPosts() {
-  const API = 'https://wp3.zmt3.com/wp-json/wp/v2';
-  const categoryRes = await fetch(`${API}/categories?slug=Highlight`);
-  if (!categoryRes.ok) throw new Error("Failed to fetch category");
-  const categoryData = await categoryRes.json();
-
-  if (categoryData.length === 0) return [];
-
-  const categoryId = categoryData[0].id;
-  const postsRes = await fetch(`${API}/posts?categories=${categoryId}`);
-  if (!postsRes.ok) throw new Error("Failed to fetch highlighted posts");
-  const posts = await postsRes.json();
-
-  // Fetch featured images for highlighted posts
-  const postsWithImages = await Promise.all(
-    posts.map(async (post) => {
-      let featuredImage = null;
-      if (post.featured_media) {
-        const mediaRes = await fetch(`${API}/media/${post.featured_media}`);
-        if (mediaRes.ok) {
-          const mediaData = await mediaRes.json();
-          featuredImage = mediaData.source_url;
+const { data: highlightedPosts, pending: isHighlightLoading, error: highlightError } = await useAsyncData(
+  'highlighted-posts',
+  async () => {
+    const API = 'https://wp3.zmt3.com/wp-json/wp/v2'
+    
+    // Fetch category ID
+    const categoryRes = await fetch(`${API}/categories?slug=Highlight`)
+    if (!categoryRes.ok) throw new Error("Failed to fetch category")
+    const categoryData = await categoryRes.json()
+    
+    if (categoryData.length === 0) return []
+    
+    // Fetch posts with category
+    const categoryId = categoryData[0].id
+    const postsRes = await fetch(`${API}/posts?categories=${categoryId}`)
+    if (!postsRes.ok) throw new Error("Failed to fetch highlighted posts")
+    const posts = await postsRes.json()
+    
+    // Fetch featured images
+    const postsWithImages = await Promise.all(
+      posts.map(async (post) => {
+        let featuredImage = null
+        if (post.featured_media) {
+          const mediaRes = await fetch(`${API}/media/${post.featured_media}`)
+          if (mediaRes.ok) {
+            const mediaData = await mediaRes.json()
+            featuredImage = mediaData.source_url
+          }
         }
-      }
-      return { ...post, featuredImage };
-    })
-  );
+        return { ...post, featuredImage }
+      })
+    )
+    
+    return postsWithImages
+  }
+)
 
-  return postsWithImages;
-}
+const skillList = ref([...skills])
+
+useHead({
+  title: 'Zubair - MERN Stack Developer',
+  meta: [
+    { name: 'description', content: 'MERN Stack Developer writing about life, code, Islam and more.' }
+  ]
+})
 </script>
-
 
 <template>
   <main>
@@ -140,15 +91,15 @@ async function fetchHighlightedPosts() {
         <section class="segment first">
           <Heading title="Latest Posts" :slug="'/blog'" />
           <div class="posts newspaper">
-            <template v-if="latestPosts.loading">
-             Loading
+            <template v-if="isLatestLoading">
+              Loading
             </template>
-            <template v-else-if="latestPosts.error">
-              <p class="error">{{ latestPosts.error }}</p>
+            <template v-else-if="latestError">
+              <p class="error">{{ latestError }}</p>
             </template>
             <template v-else>
               <NuxtLink
-                v-for="post in latestPosts.data"
+                v-for="post in latestPosts"
                 :key="post.slug"
                 class="post"
                 :to="`/blog/${post.slug}`"
@@ -162,15 +113,15 @@ async function fetchHighlightedPosts() {
         <section class="segment large">
           <Heading title="Highlights" />
           <div class="highlight-preview">
-            <template v-if="highlightedPosts.loading">
+            <template v-if="isHighlightLoading">
               Loading
             </template>
-            <template v-else-if="highlightedPosts.error">
-              <p class="error">{{ highlightedPosts.error }}</p>
+            <template v-else-if="highlightError">
+              <p class="error">{{ highlightError }}</p>
             </template>
             <template v-else>
               <div
-                v-for="hPost in highlightedPosts.data"
+                v-for="hPost in highlightedPosts"
                 :key="hPost.slug"
                 class="muted card flex"
               >
@@ -210,4 +161,3 @@ async function fetchHighlightedPosts() {
     </div>
   </main>
 </template>
-

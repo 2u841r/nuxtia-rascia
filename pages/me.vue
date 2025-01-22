@@ -50,8 +50,7 @@
               <blockquote>
                 <ul>
                   <li>
-                    “My mother always used to say: The older you get, the better you
-                    get, unless you’re a banana.” —Rose (Betty White)
+                    “My mother always used to say: The older you get, the better you get, unless you’re a banana.” —Rose (Betty White)
                   </li>
                   <li>
                     “You will never meet a hater doing better than you.” — David
