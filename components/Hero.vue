@@ -10,7 +10,7 @@ export default {
       default: "",
     },
     highlight: {
-      type: String,
+      type: Number,
       default: "",
     },
     index: {

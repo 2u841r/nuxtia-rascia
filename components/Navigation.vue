@@ -11,7 +11,7 @@ import github from "./public/assets/nav-github.png";
 // DARK MODE
 import  '../styles/style.css';
 import '../styles/new-moon.css';
-import * as dark from '~/styles/dark-mode.css'
+import '../styles/dark-mode.css'
 
 const theme = ref('dark');
 const srcImage = computed(() => theme.value === 'dark' ? sun : moon);
