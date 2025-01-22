@@ -10,13 +10,10 @@
             <div class="post-content">
               <p>Hey, I'm Zubair. I'm a MERN Stack Developer.</p>
               <p>
-                This is my spot on the web for writing, projects, tutorials, art,
-                and anything else I want to put out there. Check out the blog, or
-                take a look at the projects page to see a highlight of my
-                open-source work.
+                This is my spot on the web for writing, projects, tutorials, art, and anything else I want to put out there. Check out the blog, or take a look at the projects page to see a highlight of my open-source work.
               </p>
               <p>
-                Feel free to contact me by email at <a href="mailto:info+ziz@zmt3.com">info+ziz@zmt3.com</a> to say hi!
+                Feel free to contact me by email at <a href="mailto:info+ziz@zmt3.com">info+nuxt@zmt3.com</a> to say hi!
               </p>
               <h2 id="tools">Tools</h2>
               <h3 id="software">Software</h3>
