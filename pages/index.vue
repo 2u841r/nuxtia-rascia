@@ -5,11 +5,13 @@ import Projects from '~/components/Projects.vue'
 import { formatDate } from '~/utils/helpers.js'
 import skills from '~/assets/data/skillList'
 
+const runtimeConfig = useRuntimeConfig()
 // Convert fetching logic to use useAsyncData
 const { data: latestPosts, pending: isLatestLoading, error: latestError } = await useAsyncData(
   'latest-posts',
   async () => {
-    const API = 'https://wp3.zmt3.com/wp-json/wp/v2'
+    const API = runtimeConfig.public.NUXT_PUBLIC_API
+    console.log(API)
     const res = await fetch(`${API}/posts?per_page=6&categories_exclude=3`)
     if (!res.ok) throw new Error("Failed to fetch latest posts")
     return res.json()
@@ -19,8 +21,8 @@ const { data: latestPosts, pending: isLatestLoading, error: latestError } = awai
 const { data: highlightedPosts, pending: isHighlightLoading, error: highlightError } = await useAsyncData(
   'highlighted-posts',
   async () => {
-    const API = 'https://wp3.zmt3.com/wp-json/wp/v2'
-    
+    const API = runtimeConfig.public.NUXT_PUBLIC_API
+
     // Fetch category ID
     const categoryRes = await fetch(`${API}/categories?slug=Highlight`)
     if (!categoryRes.ok) throw new Error("Failed to fetch category")

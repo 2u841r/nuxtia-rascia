@@ -2,7 +2,8 @@
 import { computed } from "vue";
 import Hero from "@/components/Hero.vue";
 
-const API = `https://wp3.zmt3.com/wp-json/wp/v2`;
+const runtimeConfig = useRuntimeConfig()
+const API = runtimeConfig.public.NUXT_PUBLIC_API;
 
 // Replace onServerPrefetch with useFetch
 const { data: allCategories, error } = await useFetch(`${API}/categories`, {

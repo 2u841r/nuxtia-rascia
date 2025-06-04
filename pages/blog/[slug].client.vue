@@ -10,11 +10,13 @@ const postData = ref(null);
 const errorMessage = ref(null);
 const categories = ref([]);
 const tags = ref([]);
+const runtimeConfig = useRuntimeConfig()
 
 const fetchPostData = async () => {
-  console.log(`https://wp3.zmt3.com/wp-json/wp/v2/posts?slug=${blogSlug}`)
+  const API = runtimeConfig.public.NUXT_PUBLIC_API
+
   try {
-    const response = await fetch(`https://wp3.zmt3.com/wp-json/wp/v2/posts?slug=${blogSlug}`);
+    const response = await fetch(`${API}/posts?slug=${blogSlug}`);
     if (!response.ok) throw new Error('Failed to fetch post data');
     const post = await response.json();
 
@@ -26,13 +28,13 @@ const fetchPostData = async () => {
 
     // Fetch categories
     const categoryIds = post[0].categories.join(',');
-    const categoriesRes = await fetch(`https://wp3.zmt3.com/wp-json/wp/v2/categories?include=${categoryIds}`);
+    const categoriesRes = await fetch(`${API}/categories?include=${categoryIds}`);
     if (!categoriesRes.ok) throw new Error('Failed to fetch categories');
     categories.value = await categoriesRes.json();
 
     // Fetch tags
     const tagIds = post[0].tags.join(',');
-    const tagsRes = await fetch(`https://wp3.zmt3.com/wp-json/wp/v2/tags?include=${tagIds}`);
+    const tagsRes = await fetch(`${API}/tags?include=${tagIds}`);
     if (!tagsRes.ok) throw new Error('Failed to fetch tags');
     tags.value = await tagsRes.json();
 

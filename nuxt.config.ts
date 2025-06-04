@@ -2,6 +2,13 @@
 import { dirname, resolve } from "path";
 
 export default defineNuxtConfig({
+  vite: {
+    server: {
+      fs: {
+        allow: ['.']
+      }
+    }
+  },
   nitro: {
     prerender: {
       autoSubfolderIndex: false,
@@ -10,7 +17,7 @@ export default defineNuxtConfig({
   css: ["@/styles/style.css"],
   runtimeConfig: {
     public: {
-      API: process.env.NUXT_API,
+      NUXT_PUBLIC_API: process.env.NUXT_PUBLIC_API
     },
   },
   app: {

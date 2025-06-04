@@ -6,7 +6,8 @@ import { capitalizeFirstLetter, groupPostsByYear, formatDate } from "@/utils/hel
 
 const route = useRoute();
 const categorySlug = capitalizeFirstLetter(route.params.slug);
-const API = `https://wp3.zmt3.com/wp-json/wp/v2`;
+const runtimeConfig = useRuntimeConfig()
+const API = runtimeConfig.public.NUXT_PUBLIC_API;
 
 // Fetch category first
 const { data: categoryData } = await useFetch(`${API}/categories`, {

@@ -6,7 +6,9 @@ import { capitalizeFirstLetter, groupPostsByYear, formatDate } from "@/utils/hel
 
 const route = useRoute();
 const tagSlug = capitalizeFirstLetter(route.params.slug);
-const API = `https://wp3.zmt3.com/wp-json/wp/v2`;
+
+const runtimeConfig = useRuntimeConfig()
+const API = runtimeConfig.public.NUXT_PUBLIC_API;
 
 // Fetch tag first
 const { data: tagData } = await useFetch(`${API}/tags`, {

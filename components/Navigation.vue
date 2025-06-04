@@ -1,6 +1,6 @@
 <script setup>
 import blog from "assets/nav-blog.png";
-import search from "./public/assets/nav-search.png  ";
+import search from "./public/assets/nav-search.png";
 import floppy from "./public/assets/nav-floppy.png";
 import projects from "./public/assets/nav-projects.png";
 import moon from "./public/assets/emoji/moon.png";
