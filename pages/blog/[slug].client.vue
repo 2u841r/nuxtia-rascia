@@ -41,6 +41,7 @@ const fetchPostData = async () => {
   } catch (error) {
     errorMessage.value = `An error occurred while fetching the blog - ${blogSlug}.`;
     console.error(error);
+    
   }
 };
 
