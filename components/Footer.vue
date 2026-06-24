@@ -1,10 +1,10 @@
 
 <script setup>
 // Update these imports to match your assets directory structure in Nuxt
-import nuxt from './public/assets/nuxt.png';
-import netlify from './public/assets/netlify.png';
-import github from './public/assets/nav-github.png';
-import floppy from './public/assets/nav-floppy.png';
+import nuxt from '~/assets/nuxt.png';
+import netlify from '~/assets/netlify.png';
+import github from '~/assets/nav-github.png';
+import floppy from '~/assets/nav-floppy.png';
 
 const links = [
   { url: '/colophon', label: 'Colophon' },

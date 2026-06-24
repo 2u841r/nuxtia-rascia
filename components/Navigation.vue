@@ -1,11 +1,11 @@
 <script setup>
-import blog from "assets/nav-blog.png";
-import search from "./public/assets/nav-search.png";
-import floppy from "./public/assets/nav-floppy.png";
-import projects from "./public/assets/nav-projects.png";
-import moon from "./public/assets/emoji/moon.png";
-import sun from "./public/assets/emoji/sun.png";
-import github from "./public/assets/nav-github.png";
+import blog from "~/assets/nav-blog.png";
+import search from "~/assets/nav-search.png";
+import floppy from "~/assets/nav-floppy.png";
+import projects from "~/assets/nav-projects.png";
+import moon from "~/assets/emoji/moon.png";
+import sun from "~/assets/emoji/sun.png";
+import github from "~/assets/nav-github.png";
 
 
 // DARK MODE
