@@ -14,5 +14,10 @@
     "vue": "latest",
     "vue-router": "latest"
   },
+  "pnpm": {
+    "overrides": {
+      "nanoid": "~3.3.18"
+    }
+  },
   "packageManager": "pnpm@10.11.0"
 }
